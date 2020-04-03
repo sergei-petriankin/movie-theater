@@ -9,10 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 @Configuration
 public class AuditoriumConfig {
@@ -76,8 +73,11 @@ public class AuditoriumConfig {
 
     @Bean
     public AuditoriumService auditoriumService() {
-        Set<Auditorium> auditoriums = new HashSet<>();
-        Collections.addAll(auditoriums, bigAuditorium(), mediumAuditorium(), smallAuditorium());
+        Map<String, Auditorium> auditoriums = new HashMap<>();
+        auditoriums.put(bigAuditorium().getName(), bigAuditorium());
+        auditoriums.put(mediumAuditorium().getName(), mediumAuditorium());
+        auditoriums.put(smallAuditorium().getName(), smallAuditorium());
+
         return new AuditoriumServiceImpl(auditoriums);
     }
 }
