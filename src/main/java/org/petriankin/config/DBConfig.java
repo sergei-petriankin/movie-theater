@@ -35,7 +35,5 @@ public class DBConfig {
     public void startDBManager() {
         //h2
         DatabaseManagerSwing.main(new String[]{"--url", "jdbc:h2:mem:testdb", "--user", "sa", "--password", ""});
-
     }
-
 }

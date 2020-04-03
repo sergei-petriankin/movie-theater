@@ -1,12 +1,15 @@
 package org.petriankin.config;
 
 import org.petriankin.domain.Auditorium;
+import org.petriankin.service.AuditoriumService;
+import org.petriankin.service.impl.AuditoriumServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -71,4 +74,10 @@ public class AuditoriumConfig {
         return auditorium;
     }
 
+    @Bean
+    public AuditoriumService auditoriumService() {
+        Set<Auditorium> auditoriums = new HashSet<>();
+        Collections.addAll(auditoriums, bigAuditorium(), mediumAuditorium(), smallAuditorium());
+        return new AuditoriumServiceImpl(auditoriums);
+    }
 }
