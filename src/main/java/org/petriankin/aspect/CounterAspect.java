@@ -17,17 +17,17 @@ public class CounterAspect {
         this.eventCounterRepository = eventCounterRepository;
     }
 
-    @After("execution(* com.epam.spring.hometask.service.EventService.getByName(..))")
+    @After("execution(* org.petriankin.service.EventService.getByName(..))")
     private void countCallingsByName(JoinPoint jp) {
         eventCounterRepository.putCallingsByName(1);
     }
 
-    @After("execution(* com.epam.spring.hometask.service.BookingService.getTicketsPrice(..))")
+    @After("execution(* org.petriankin.service.BookingService.getTicketsPrice(..))")
     private void countGettingPrice(JoinPoint jp) {
         eventCounterRepository.putCallingsByPrice(1);
     }
 
-    @After("execution(* com.epam.spring.hometask.service.BookingService.bookTickets(..))")
+    @After("execution(* org.petriankin.service.BookingService.bookTickets(..))")
     private void countBooking(JoinPoint jp) {
         eventCounterRepository.putCallingsByBooking(1);
     }

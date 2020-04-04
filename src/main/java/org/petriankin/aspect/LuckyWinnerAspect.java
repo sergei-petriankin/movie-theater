@@ -15,7 +15,7 @@ public class LuckyWinnerAspect {
 
     private static final double CHANCE_TO_WIN = 0.2;
 
-    @Around("execution(* com.epam.spring.hometask.service.impl.BookingServiceImpl.bookTickets(..))")
+    @Around("execution(* org.petriankin.service.impl.BookingServiceImpl.bookTickets(..))")
     private void checkLucky(ProceedingJoinPoint joinPoint) throws Throwable {
         if (!isLucky()) {
             joinPoint.proceed();
